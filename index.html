@@ -3,7 +3,178 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Health Self-Check Kiosk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
   </head>
-  <body></body>
+  <body>
+    <header class="kiosk-header">
+      <div class="kiosk-header__mark">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <span class="kiosk-header__title">HEALTH SELF-CHECK KIOSK</span>
+      </div>
+      <p class="kiosk-header__sub">
+        Walk-up wellness scan &middot; private &middot; takes under a minute
+      </p>
+    </header>
+
+    <main class="kiosk-main">
+      <!-- Form Card -->
+      <section class="panel form-panel" aria-labelledby="formTitle">
+        <h2 id="formTitle" class="panel__title">
+          <span class="tag">01</span> Enter your details
+        </h2>
+
+        <form id="bmiForm" novalidate>
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Juan Dela Cruz"
+              required
+            />
+            <span class="field__error" id="err-name"></span>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="age">Age</label>
+              <input
+                type="number"
+                id="age"
+                name="age"
+                min="1"
+                max="120"
+                placeholder="20"
+                required
+              />
+              <span class="field__error" id="err-age"></span>
+            </div>
+
+            <div class="field">
+              <label for="sex">Sex</label>
+              <select id="sex" name="sex" required>
+                <option value="">Select</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+              </select>
+              <span class="field__error" id="err-sex"></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="weight">Weight (kg)</label>
+              <input
+                type="number"
+                id="weight"
+                name="weight"
+                min="1"
+                step="0.1"
+                placeholder="60"
+                required
+              />
+              <span class="field__error" id="err-weight"></span>
+            </div>
+
+            <div class="field">
+              <label for="height">Height (cm)</label>
+              <input
+                type="number"
+                id="height"
+                name="height"
+                min="1"
+                step="0.1"
+                placeholder="165"
+                required
+              />
+              <span class="field__error" id="err-height"></span>
+            </div>
+          </div>
+
+          <p class="form-status" id="formStatus" role="alert"></p>
+
+          <button type="submit" class="btn-primary">Check My BMI</button>
+        </form>
+      </section>
+
+      <!-- Result Card -->
+      <section
+        class="panel result-panel hidden"
+        id="resultCard"
+        aria-live="polite"
+      >
+        <h2 class="panel__title"><span class="tag">02</span> Your reading</h2>
+
+        <div class="gauge-wrap">
+          <svg
+            viewBox="0 0 240 140"
+            class="gauge"
+            id="gaugeSvg"
+            aria-hidden="true"
+          >
+            <path d="M 20 130 A 100 100 0 0 1 220 130" class="gauge__track" />
+            <path
+              d="M 20 130 A 100 100 0 0 1 220 130"
+              class="gauge__fill"
+              id="gaugeFill"
+              pathLength="100"
+            />
+            <line
+              x1="120"
+              y1="130"
+              x2="120"
+              y2="40"
+              class="gauge__needle"
+              id="gaugeNeedle"
+            />
+            <circle cx="120" cy="130" r="6" class="gauge__hub" />
+          </svg>
+          <div class="gauge-readout">
+            <span class="gauge-readout__value" id="bmiValue">--</span>
+            <span class="gauge-readout__label">BMI</span>
+          </div>
+        </div>
+
+        <div class="result-body">
+          <p class="result-greeting" id="resultGreeting"></p>
+          <span class="badge" id="resultCategory">--</span>
+          <p class="result-message" id="resultMessage"></p>
+        </div>
+
+        <button type="button" class="btn-secondary" id="resetBtn">
+          Run another check
+        </button>
+        <p class="sync-status" id="syncStatus"></p>
+      </section>
+
+      <!-- Recent submissions (session log) -->
+      <section class="panel log-panel" aria-labelledby="logTitle">
+        <h2 id="logTitle" class="panel__title">
+          <span class="tag">03</span> Recent scans this session
+        </h2>
+        <ul class="log-list" id="logList">
+          <li class="log-empty" id="logEmpty">
+            No scans yet. Your first result will appear here.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="kiosk-footer">
+      <p>
+        Health Self-Check Kiosk &middot; Lab 5 &middot; DLSU-D ICS &middot;
+        Results are recorded for wellness monitoring only.
+      </p>
+    </footer>
+
+    <script src="./src/script.js" type="module"></script>
+  </body>
 </html>
