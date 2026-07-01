@@ -8,8 +8,7 @@ nurse/HR office to review.
 
 ## Live demo
 
-`https://<your-github-username>.github.io/health-checker-kiosk/`
-_(fill in after enabling GitHub Pages — see Part F of the lab guide)_
+`https://dlsud-submissions.github.io/itprofelective-health-checker-kiosk/`
 
 ## Running locally
 
@@ -33,7 +32,7 @@ health-checker-kiosk/
 Submissions are recorded to **BMI Kiosk Records**:
 https://docs.google.com/spreadsheets/d/1c4hnJabpWNuxMesHgPuPh3oujAzPB-JsjlpMNsxFoIM/edit
 
-Apps Script Web App URL: `[<paste your deployed URL here for the submission doc>](https://script.google.com/macros/s/AKfycbyyYjw7dykia0zPiaZELhK0MoauGPitXeWq6--bj11m6U8PD1iXB9RjkMpCxC38ajkO/exec)`
+Apps Script Web App URL: `https://script.google.com/macros/s/AKfycbyyYjw7dykia0zPiaZELhK0MoauGPitXeWq6--bj11m6U8PD1iXB9RjkMpCxC38ajkO/exec`
 
 ## Control structures used
 
